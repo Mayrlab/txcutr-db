@@ -24,4 +24,4 @@ jobs:
         uses: snakemake/snakemake-github-action@v1.23.0
         with:
           directory: '.'
-          run: 'containerize'
+          task: 'containerize'
