@@ -41,7 +41,6 @@ minDistance <- as.integer(snakemake@params$mergeDist)
 
 ## load genome
 bsg <- getBSgenome(snakemake@params$genome)
-seqlevelsStyle(bsg) <- "Ensembl"
 
 ## set cores
 BiocParallel::register(BiocParallel::MulticoreParam(snakemake@threads))
@@ -52,6 +51,7 @@ BiocParallel::register(BiocParallel::MulticoreParam(snakemake@threads))
 
 txdb <- makeTxDbFromGFF(file=snakemake@input$gtf, organism=organism(bsg))
 txdb <- keepStandardChromosomes(txdb, pruning.mode="coarse")
+seqlevelsStyle(txdb) <- "UCSC"
 
 txdb_result <- truncateTxome(txdb, maxTxLength)
 
