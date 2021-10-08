@@ -1,0 +1,27 @@
+name: Snakemake-Validate
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  snakemake:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Snakemake Linting
+        uses: snakemake/snakemake-github-action@v1
+        with:
+          directory: '.'
+          args: '--lint'
+
+      - name: Create container file
+        uses: snakemake/snakemake-github-action@v1
+        with:
+          directory: '.'
+          run: 'containerize'
