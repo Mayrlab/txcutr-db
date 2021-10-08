@@ -14,11 +14,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Snakemake Linting
+      - name: Snakemake dry run
         uses: snakemake/snakemake-github-action@v1.23.0
         with:
           directory: '.'
-          args: '--lint'
+          args: '-np'
 
       - name: Create container file
         uses: snakemake/snakemake-github-action@v1.23.0
