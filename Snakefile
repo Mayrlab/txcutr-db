@@ -15,10 +15,11 @@ rule all:
         expand("{species}/{annotation}.txcutr.w{width}.kdx", species=["homo_sapiens"],
                annotation=["Homo_sapiens.GRCh38.104",
                            "Homo_sapiens.GRCh38.93.cr_3_0_0",
-                           "gencode.v38.annotation"], width=[500]),
+                           "gencode.v38.annotation",
+                           "gencode.v38.annotation.pc"], width=[500]),
         expand("{species}/{annotation}.txcutr.w{width}.kdx", species=["mus_musculus"],
                annotation=["Mus_musculus.GRCm38.93.cr_3_0_0",
-                           "gencode.vM25.annotation"], width=[500]),
+                           "gencode.vM25.annotation"], width=[500])
 
 
 ################################################################################
@@ -96,6 +97,20 @@ rule clean_gtf_mRNA_ends:
         bgzip -c > {output.gtf}
         """
 
+rule filter_protein_coding:
+    input:
+        gtf="{species}/{annotation}.gtf.gz",
+        awk="scripts/filter_protein_coding.awk"
+    output:
+        gtf="{species}/{annotation}.pc.gtf.gz"
+    conda: "envs/samtools.yaml"
+    shell:
+        """
+        gzip -cd {input.gtf} |
+        awk -f {input.awk} |
+        bgzip -c > {output.gtf}
+        """
+
 rule filter_cellranger_3_0_0:
     input:
         gtf="{species}/{annotation}.gtf.gz"
@@ -133,7 +148,7 @@ rule filter_cellranger_3_0_0:
         bgzip -c $gtf_out > {output.gtf}
         rm -f $gtf_in $gtf_out
         """
-        
+
 ################################################################################
 ## txcutr Steps
 ################################################################################
