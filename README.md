@@ -12,10 +12,10 @@ in ordered to generate correct FASTA files for `mm39` or `hg38` references.
 ## Prerequisites
 - Snakemake >= 5.11
 - Conda/Mamba
-- Singularity
 - (optional) CellRanger
 
-Note that the Singularity requirement entails a Linux OS.
+This should be compatible with Linux and MacOS systems. If Conda is not already installed, we recommend 
+installing [Mambaforge](https://github.com/conda-forge/miniforge#mambaforge).
 
 ## Installation
 
@@ -33,7 +33,7 @@ manuscript. One likely does not want to generate all of these. Instead, a single
 the commandline. Since the `kallisto` index (.kdx file) is the last output, that is what should be specified:
 
 ```bash
-snakemake --use-singularity --use-conda homo_sapiens/gencode.v38.annotation.pc.txcutr.w500.kdx
+snakemake --use-conda homo_sapiens/gencode.v38.annotation.pc.txcutr.w500.kdx
 ```
 
 This would use the GENCODE v38 annotation, filtered for only protein-coding transcripts (`.pc`) with validated
