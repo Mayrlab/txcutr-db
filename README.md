@@ -1,4 +1,6 @@
 # Overview
+[![Snakemake-Validate](https://github.com/Mayrlab/txcutr-db/actions/workflows/snakemake-validate.yml/badge.svg)](https://github.com/Mayrlab/txcutr-db/actions/workflows/snakemake-validate.yml)
+
 This repository provides a Snakemake pipeline for generating the target files for use in 
 [the scUTRquant pipeline](https://Mayrlab.github.io/scUTRquant). This is provided as a record
 of how we generated truncated transcriptomes for [the scUTRquant manuscript](https://www.biorxiv.org/content/10.1101/2021.11.22.469635v1) 
@@ -12,10 +14,10 @@ in ordered to generate correct FASTA files for `mm39` or `hg38` references.
 ## Prerequisites
 - Snakemake >= 5.11
 - Conda/Mamba
-- Singularity
 - (optional) CellRanger
 
-Note that the Singularity requirement entails a Linux OS.
+This should be compatible with Linux and MacOS systems. If Conda is not already installed, we recommend 
+installing [Mambaforge](https://github.com/conda-forge/miniforge#mambaforge).
 
 ## Installation
 
@@ -33,7 +35,7 @@ manuscript. One likely does not want to generate all of these. Instead, a single
 the commandline. Since the `kallisto` index (.kdx file) is the last output, that is what should be specified:
 
 ```bash
-snakemake --use-singularity --use-conda homo_sapiens/gencode.v38.annotation.pc.txcutr.w500.kdx
+snakemake --use-conda homo_sapiens/gencode.v38.annotation.pc.txcutr.w500.kdx
 ```
 
 This would use the GENCODE v38 annotation, filtered for only protein-coding transcripts (`.pc`) with validated
@@ -42,6 +44,8 @@ This would use the GENCODE v38 annotation, filtered for only protein-coding tran
 # Notes
 
 The `txcutr` step is computationally demanding. For example, in an HPC setting, we have it configured to 
-run with 20 cores and 4 GB/core, which takes about 30 mins. Be aware that some rules include `thread` and 
-`resources` specifications that are used by Snakemake cluster profiles. Please adjust accordingly (e.g., 
-not all cluster configurations interpret the `mem_mb` parameter as *per core*)!
+run with 20 cores and 4 GB/core, which takes about 30 mins. 
+
+Be aware that some rules include `thread` and `resources` specifications that are used by Snakemake cluster 
+profiles. Please adjust accordingly (e.g., not all cluster configurations interpret the `mem_mb` parameter 
+as *per core*)!

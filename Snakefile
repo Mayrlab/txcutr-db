@@ -180,8 +180,7 @@ rule kallisto_index_txcutr:
         "{species}/{annotation}.txcutr.w{width}.fa.gz"
     output:
         "{species}/{annotation}.txcutr.w{width}.kdx"
-    container:
-        "docker://mfansler/scutr-quant:0.1.5"
+    conda: "envs/kallisto.yaml"
     resources:
         mem_mb=16000
     shell:
