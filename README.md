@@ -1,4 +1,6 @@
 # Overview
+[![Snakemake-Validate](https://github.com/Mayrlab/txcutr-db/actions/workflows/snakemake-validate.yml/badge.svg)](https://github.com/Mayrlab/txcutr-db/actions/workflows/snakemake-validate.yml)
+
 This repository provides a Snakemake pipeline for generating the target files for use in 
 [the scUTRquant pipeline](https://Mayrlab.github.io/scUTRquant). This is provided as a record
 of how we generated truncated transcriptomes for [the scUTRquant manuscript](https://www.biorxiv.org/content/10.1101/2021.11.22.469635v1) 
@@ -42,6 +44,8 @@ This would use the GENCODE v38 annotation, filtered for only protein-coding tran
 # Notes
 
 The `txcutr` step is computationally demanding. For example, in an HPC setting, we have it configured to 
-run with 20 cores and 4 GB/core, which takes about 30 mins. Be aware that some rules include `thread` and 
-`resources` specifications that are used by Snakemake cluster profiles. Please adjust accordingly (e.g., 
-not all cluster configurations interpret the `mem_mb` parameter as *per core*)!
+run with 20 cores and 4 GB/core, which takes about 30 mins. 
+
+Be aware that some rules include `thread` and `resources` specifications that are used by Snakemake cluster 
+profiles. Please adjust accordingly (e.g., not all cluster configurations interpret the `mem_mb` parameter 
+as *per core*)!
