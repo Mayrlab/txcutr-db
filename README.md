@@ -1,5 +1,7 @@
 # Overview
 [![Snakemake-Validate](https://github.com/Mayrlab/txcutr-db/actions/workflows/snakemake-validate.yml/badge.svg)](https://github.com/Mayrlab/txcutr-db/actions/workflows/snakemake-validate.yml)
+[![DOI](https://zenodo.org/badge/414776529.svg)](https://zenodo.org/badge/latestdoi/414776529)
+
 
 This repository provides a Snakemake pipeline for generating the target files for use in 
 [the scUTRquant pipeline](https://Mayrlab.github.io/scUTRquant). This is provided as a record
