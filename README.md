@@ -19,7 +19,7 @@ in ordered to generate correct FASTA files for `mm39` or `hg38` references.
 - (optional) CellRanger
 
 This should be compatible with Linux and MacOS systems. If Conda is not already installed, we recommend 
-installing [Mambaforge](https://github.com/conda-forge/miniforge#mambaforge).
+installing [Miniforge](https://github.com/conda-forge/miniforge#miniforge).
 
 ## Installation
 
