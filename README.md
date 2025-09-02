@@ -5,8 +5,12 @@
 
 This repository provides a Snakemake pipeline for generating the target files for use in 
 [the scUTRquant pipeline](https://Mayrlab.github.io/scUTRquant). This is provided as a record
-of how we generated truncated transcriptomes for [the scUTRquant manuscript](https://www.biorxiv.org/content/10.1101/2021.11.22.469635v1) 
-and an example of how to use the Bioconductor package [`txcutr`](https://bioconductor.org/packages/release/bioc/html/txcutr.html). 
+of how we generated truncated transcriptomes for the scUTRquant manuscript and an example of 
+how to use the Bioconductor package [`txcutr`](https://bioconductor.org/packages/release/bioc/html/txcutr.html). 
+
+The accompanying manuscript is openly available at:
+
+> Fansler, M.M., Mitschka, S. & Mayr, C. Quantifying 3′UTR length from scRNA-seq data reveals changes independent of gene expression. *Nat Commun* **15**, 4050 (2024). [https://doi.org/10.1038/s41467-024-48254-9](https://doi.org/10.1038/s41467-024-48254-9)
 
 Please note that, while the pipeline does provide some flexibility, it was implemented with the limited
 scope of `mm10` and `hg38` annotations from Ensembl and GENCODE. For example, it must be modified
